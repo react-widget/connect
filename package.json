@@ -1,0 +1,70 @@
+{
+  "name": "react-widget-create-context-connect",
+  "version": "0.1.0",
+  "description": "",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/lib/index.d.ts",
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@babel/runtime": "^7.12.5",
+    "@types/enzyme": "^3.10.5",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
+    "@types/jest": "^25.1.4",
+    "@types/react": "^17.0.18",
+    "babel-plugin-lodash": "^3.3.4",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "babel-plugin-search-and-replace": "^1.0.1",
+    "babel-plugin-transform-define": "^2.0.0",
+    "babel-preset-packez": "^1.4.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "jest": "^25.1.0",
+    "lodash": "^4.17.20",
+    "npm-run-all": "^4.1.5",
+    "packez": "^4.5.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "rimraf": "^3.0.2",
+    "transform-es": "^5.6.2",
+    "typescript": "^4.3.5"
+  },
+  "files": [
+    "dist",
+    "*.md"
+  ],
+  "scripts": {
+    "dev": "packez server ./examples/index.tsx -d dist -w -c",
+    "test": "jest",
+    "build": "run-s clean tsc cjs esm docs",
+    "docs": "packez build ./examples/index.tsx -d docs -c",
+    "start": "tsc -w",
+    "cjs": "transform-es src -d dist/cjs -c -t cjs",
+    "esm": "transform-es src -d dist/esm -c -t esm",
+    "tsc": "tsc",
+    "clean": "rimraf dist docs",
+    "prepublishOnly": "run-s test build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/react-widget/create-context-connect.git"
+  },
+  "keywords": [
+    "react",
+    "connect",
+    "create-create-connect",
+    "context-connect"
+  ],
+  "author": "nobo.zhou@foxmail.com",
+  "license": "MIT",
+  "browserslist": [
+    ">0.25%",
+    "not dead",
+    "not ie <= 10",
+    "not op_mini all"
+  ]
+}

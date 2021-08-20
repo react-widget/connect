@@ -1,0 +1,22 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.main {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 80px;
+  display: flex;
+
+  .counter {
+    flex: 1;
+    border: 1px solid #e6e9ef;
+    font-size: 12px;
+    border-radius: 5px;
+    button {
+       font-size: 12px;
+    }
+  }
+}
