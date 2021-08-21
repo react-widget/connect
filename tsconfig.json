@@ -17,7 +17,7 @@
     "suppressImplicitAnyIndexErrors": true,
     "noImplicitThis": false,
     "experimentalDecorators": true,
-    "strictNullChecks": true,
+    "strictNullChecks": false,
     "resolveJsonModule": true,
     "typeRoots": [
       "node_modules/@types",
