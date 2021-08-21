@@ -9,7 +9,7 @@ import {
   Counter3Context,
   Counter4Context,
 } from "./Context";
-import Counter, { CombineCounterConnect } from "./Counter";
+import Counter, { CombineCounterConnect, SelectorCounter } from "./Counter";
 
 class App extends React.Component {
   state = {
@@ -64,13 +64,18 @@ class App extends React.Component {
                     value: this.state.counter4,
                   }}
                 >
-                  <Counter type="counter1" onClick={this.handleCounter1} />
-                  <Counter type="counter2" onClick={this.handleCounter2} />
-                  <Counter type="counter3" onClick={this.handleCounter3} />
-                  <Counter type="counter4" onClick={this.handleCounter4}>
-                    <span>由于该组件children每次都是新的，所以每次都会刷新</span>
-                  </Counter>
-                  <CombineCounterConnect></CombineCounterConnect>
+                  <div className="row">
+                    <Counter type="counter1" onClick={this.handleCounter1} />
+                    <Counter type="counter2" onClick={this.handleCounter2} />
+                    <Counter type="counter3" onClick={this.handleCounter3} />
+                    <Counter type="counter4" onClick={this.handleCounter4}>
+                      <span>由于该组件children每次都是新的，所以每次都会刷新</span>
+                    </Counter>
+                  </div>
+                  <div className="row">
+                    <CombineCounterConnect></CombineCounterConnect>
+                    <SelectorCounter />
+                  </div>
                 </Counter4Context.Provider>
               </Counter3Context.Provider>
             </Counter2Context.Provider>

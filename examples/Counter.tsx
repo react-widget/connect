@@ -42,6 +42,28 @@ function Counter(props: CounterProps) {
   );
 }
 
+export function SelectorCounter() {
+  const ctx = combineConnect.useSelector(values => ({
+    counter2: values.counter2.value,
+    counter4: values.counter4.value,
+  }));
+
+  return React.useMemo(
+    () => (
+      <div className="counter">
+        <div style={{ padding: 16 }}>
+          <div>counter2点击 {ctx.counter2} 次</div>
+          <div>counter4点击 {ctx.counter4} 次</div>
+          <div>
+            <RenderCounter />
+          </div>
+        </div>
+      </div>
+    ),
+    [ctx]
+  );
+}
+
 export default connect((value, props: CounterProps) => ({
   counter: value[props.type],
 }))(Counter);
