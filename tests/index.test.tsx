@@ -23,10 +23,6 @@ const CombineContexts = {
   context2: TestContext2,
 };
 
-function UseHooks({ children }) {
-  return children();
-}
-
 class Test extends React.Component {
   state = {
     counter1: 0,
