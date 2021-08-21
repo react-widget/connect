@@ -67,7 +67,7 @@ export function createConnect<T extends React.Context<any>>(Context: T) {
       currentValueRef.current = value;
     }
 
-    return currentValueRef.current;
+    return currentValueRef.current as ReturnType<M>;
   };
 
   return connect;
@@ -97,7 +97,29 @@ export function createCombineConnect<T extends CombineContext>(contexts: T) {
     );
   };
 
-  return createConnect(CombineContext);
+  const connect = createConnect(CombineContext);
+
+  connect.useSelector = function <M extends (value: GetCombineContextValue<T>) => any>(
+    selector: M,
+    equalityFn: (oldValue: ReturnType<M>, newValue: ReturnType<M>) => boolean = shallowEqual
+  ) {
+    const currentValueRef = React.useRef<ReturnType<M>>(null);
+
+    const values: GetCombineContextValue<T> = Object.create(null);
+    for (let i = 0; i < keys.length; i++) {
+      const key = keys[i];
+      values[key] = React.useContext<React.ContextType<T[string]>>(contexts[key]);
+    }
+    const value = selector(values);
+
+    if (!equalityFn(currentValueRef.current, value)) {
+      currentValueRef.current = value;
+    }
+
+    return currentValueRef.current as ReturnType<M>;
+  };
+
+  return connect;
 }
 
 export const version = "%VERSION%";
