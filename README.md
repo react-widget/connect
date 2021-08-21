@@ -8,7 +8,7 @@
 ## 使用
 
 ```tsx
-import { createConnect,createCombineConnect } from 'react-widget-create-context-connect'
+import { createConnect,createCombineConnect } from 'react-widget-connect'
 
 interface IContext1 {
   name: string
