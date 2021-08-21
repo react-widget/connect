@@ -58,4 +58,18 @@ import Component from './Component'
 
 ```
 
+如不想用`connect(...)(Component)`的方式，也提供了hooks获取关联的`Context`数据，示例：
+
+```tsx
+// App.tsx
+function App(){
+  const info = connect.useSelector( value => ({
+    username: value.name
+  }))
+
+ return React.useMemo(() => <div>{info.username}</div>, [info])
+}
+
+```
+
 
