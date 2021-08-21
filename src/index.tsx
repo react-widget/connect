@@ -1,9 +1,9 @@
 import React from "react";
 import shallowEqual from "./shallowEqual";
 
-type CombineContext = Record<string, React.Context<any>>;
+export type CombineContext = Record<string, React.Context<any>>;
 
-type GetCombineContextValue<T extends CombineContext> = {
+export type CombineContextType<T extends CombineContext> = {
   [P in keyof T]: React.ContextType<T[P]>;
 };
 
@@ -75,9 +75,9 @@ export function createConnect<T extends React.Context<any>>(Context: T) {
 
 export function createCombineConnect<T extends CombineContext>(contexts: T) {
   const keys: Array<keyof T> = Object.keys(contexts);
-  const CombineContext = React.createContext({} as GetCombineContextValue<T>);
+  const CombineContext = React.createContext({} as CombineContextType<T>);
   const CombineComponent = ({ children }) => {
-    const values: GetCombineContextValue<T> = Object.create(null);
+    const values: CombineContextType<T> = Object.create(null);
 
     for (let i = 0; i < keys.length; i++) {
       const key = keys[i];
@@ -99,13 +99,13 @@ export function createCombineConnect<T extends CombineContext>(contexts: T) {
 
   const connect = createConnect(CombineContext);
 
-  connect.useSelector = function <M extends (value: GetCombineContextValue<T>) => any>(
+  connect.useSelector = function <M extends (value: CombineContextType<T>) => any>(
     selector: M,
     equalityFn: (oldValue: ReturnType<M>, newValue: ReturnType<M>) => boolean = shallowEqual
   ) {
     const currentValueRef = React.useRef<ReturnType<M>>(null);
 
-    const values: GetCombineContextValue<T> = Object.create(null);
+    const values: CombineContextType<T> = Object.create(null);
     for (let i = 0; i < keys.length; i++) {
       const key = keys[i];
       values[key] = React.useContext<React.ContextType<T[string]>>(contexts[key]);
