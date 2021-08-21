@@ -1,5 +1,5 @@
 import React from "react";
-import { createCombineConnect, createContextConnect } from "../src";
+import { createCombineConnect, createConnect } from "../src";
 
 export interface IContext {
   counter1: number;
@@ -10,7 +10,7 @@ export interface IContext {
 
 export const Context = React.createContext<IContext>(null as any);
 
-export const connect = createContextConnect(Context);
+export const connect = createConnect(Context);
 
 interface ICounter1Context {
   value: number;

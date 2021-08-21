@@ -20,7 +20,7 @@ export interface ConnectOpts {
   pure?: boolean;
 }
 
-export function createContextConnect<T extends React.Context<any>>(Context: T) {
+export function createConnect<T extends React.Context<any>>(Context: T) {
   return function connect<M extends (value: React.ContextType<T>, ownProps: any) => any>(
     mapContextToProps: M,
     opts: ConnectOpts = {}
@@ -80,7 +80,9 @@ export function createCombineConnect<T extends CombineContext>(contexts: T) {
     );
   };
 
-  return createContextConnect(CombineContext);
+  return createConnect(CombineContext);
 }
 
-export default createContextConnect;
+export const version = "%VERSION%";
+
+export default createConnect;

@@ -1,5 +1,5 @@
 {
-  "name": "react-widget-create-context-connect",
+  "name": "react-widget-connect",
   "version": "0.1.0",
   "description": "",
   "main": "dist/cjs/index.js",
@@ -51,7 +51,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/react-widget/create-context-connect.git"
+    "url": "https://github.com/react-widget/connect.git"
   },
   "keywords": [
     "react",

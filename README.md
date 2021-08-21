@@ -1,14 +1,14 @@
-# create-context-connect
-将`React`的`Context`通过`connect`到组件，类似`React Redux`的`connect`
+# react-widget-connect
+将`React`的`Context`通过`connect`连接到组件，类似`React Redux`的`connect`
 
 ## 安装
 
-`npm install --save react-widget-create-context-connect`
+`npm install --save react-widget-connect`
 
 ## 使用
 
 ```tsx
-import { createContextConnect,createCombineConnect } from 'react-widget-create-context-connect'
+import { createConnect,createCombineConnect } from 'react-widget-create-context-connect'
 
 interface IContext1 {
   name: string
@@ -18,8 +18,8 @@ interface IContext2 {
   age: number
 }
 
-const connect = createContextConnect(IContext1)
-const combineConnect = createContextConnect({
+const connect = createConnect(IContext1)
+const combineConnect = createCombineConnect({
   ctx1:IContext1,
   ctx2:IContext2,
 })
