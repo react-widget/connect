@@ -1,14 +1,13 @@
 {
   "name": "react-widget-connect",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/lib/index.d.ts",
   "dependencies": {},
   "peerDependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react": "^16.13.1"
   },
   "devDependencies": {
     "@babel/runtime": "^7.12.5",
