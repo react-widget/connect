@@ -9,7 +9,7 @@ import {
   Counter3Context,
   Counter4Context,
 } from "./Context";
-import Counter, { CombineCounterConnect, SelectorCounter } from "./Counter";
+import Counter, { CombineCounterConnect, SelectorCounter, CombineSelectorCounter } from "./Counter";
 
 class App extends React.Component {
   state = {
@@ -73,8 +73,9 @@ class App extends React.Component {
                     </Counter>
                   </div>
                   <div className="row">
-                    <CombineCounterConnect></CombineCounterConnect>
                     <SelectorCounter />
+                    <CombineSelectorCounter />
+                    <CombineCounterConnect></CombineCounterConnect>
                   </div>
                 </Counter4Context.Provider>
               </Counter3Context.Provider>
