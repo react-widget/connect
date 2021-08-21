@@ -1,4 +1,5 @@
 import React from "react";
+import shallowEqual from "./shallowEqual";
 
 type CombineContext = Record<string, React.Context<any>>;
 
@@ -21,7 +22,7 @@ export interface ConnectOpts {
 }
 
 export function createConnect<T extends React.Context<any>>(Context: T) {
-  return function connect<M extends (value: React.ContextType<T>, ownProps: any) => any>(
+  function connect<M extends (value: React.ContextType<T>, ownProps: any) => any>(
     mapContextToProps: M,
     opts: ConnectOpts = {}
   ) {
@@ -53,7 +54,23 @@ export function createConnect<T extends React.Context<any>>(Context: T) {
 
       return React.forwardRef(forwardConnectRef);
     };
+  }
+
+  connect.useSelector = function <M extends (value: React.ContextType<T>) => any>(
+    selector: M,
+    equalityFn: (oldValue: ReturnType<M>, newValue: ReturnType<M>) => boolean = shallowEqual
+  ) {
+    const currentValueRef = React.useRef<ReturnType<M>>(null);
+    const value = selector(React.useContext(Context));
+
+    if (!equalityFn(currentValueRef.current, value)) {
+      currentValueRef.current = value;
+    }
+
+    return currentValueRef.current;
   };
+
+  return connect;
 }
 
 export function createCombineConnect<T extends CombineContext>(contexts: T) {
