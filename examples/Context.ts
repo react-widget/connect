@@ -30,9 +30,10 @@ export const Counter2Context = React.createContext<ICounter2Context>(null as any
 export const Counter3Context = React.createContext<ICounter3Context>(null as any);
 export const Counter4Context = React.createContext<ICounter4Context>(null as any);
 
-export const combineConnect = createCombineConnect({
+const contexts = {
   counter1: Counter1Context,
   counter2: Counter2Context,
   counter3: Counter3Context,
   counter4: Counter4Context,
-});
+};
+export const combineConnect = createCombineConnect(contexts);
