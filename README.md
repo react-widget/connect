@@ -66,7 +66,7 @@ function App(){
   const info = connect.useSelector( value => ({
     username: value.name
   }))
-
+ // 建议在使用 useSelector 时配合 React.useMemo
  return React.useMemo(() => <div>{info.username}</div>, [info])
 }
 
